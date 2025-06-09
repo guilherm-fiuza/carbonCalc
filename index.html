@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora - Pegada de Carbono</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/7.1.2/css/shepherd.min.css" integrity="sha512-k4DlYDc0mf1H92BOi4i/3VKmE2y5T5CuMAFGepXwYD39pmzeoJ7vIUM57esJkGtDNrWcX0V74cHPB/78415VdQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8"> <!--Define o conjunto de caracteres que podem ser usados para pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define o zoom inicial como 100% e a largura do viweport igual a tela do dispositivo usado-->
+    <title>Calculadora - Pegada de Carbono</title> <!--Define o titulo da página, que aparece no navegador, mecanismos de buscas e junto de link de compartilhação-->
+    <script src="https://cdn.tailwindcss.com"></script>  <!--Importa a biblioteca Tailwind CSS, assim permitindo utilizar classes de visuais prontos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/7.1.2/css/shepherd.min.css" integrity="sha512-k4DlYDc0mf1H92BOi4i/3VKmE2y5T5CuMAFGepXwYD39pmzeoJ7vIUM57esJkGtDNrWcX0V74cHPB/78415VdQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <!--Importa uma blibiotecas de estilos Css, possui um sistema de integridade que utiliza o hash sha512 e com o mecanismo de segurança crossorigin que garante a segurança de arquivos de outro site-->
 </head>
 
-<body class="bg-gradient-to-r from-violet-500 to-fuchsia-500">
-    <div class="container mx-auto mt-8">
-        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="px-6 py-4">
-                <h1 class="text-xl font-semibold text-gray-800">Pegada de Carbono</h1>
-                <h2 class="text-md text-gray-600 mt-2">Calculadora Simplificada escopo 1</h2>
-                <form id="carbonForm" class="mt-4">
-                    <label for="fuel" class="block text-sm font-medium text-gray-700">Quantidade de Combustível Usada (litros):</label>
-                    <input type="number" id="fuel" name="fuel" required step="0.01" min="0" value="0.00"
-                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500">
+<body class="bg-gradient-to-r from-violet-500 to-fuchsia-500">  <!--Define o corpo da página como degradê, utilizando da biblioteca Tailwind CSS-->
+    <div class="container mx-auto mt-8">  <!--Define um container que fica centralizado horizontalmente e com uma margem grande do cabeçalho, o conteudo dentro desta div é centralizado-->
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden"> <!--Define um novo container, centralizado horizontalmente, com fundo branco e bordas arredondadas, sombra e que não permite que o conteúdo transborde-->
+            <div class="px-6 py-4"> <!--Define um novo container, com espaçamento horizontal e vertical-->
+                <h1 class="text-xl font-semibold text-gray-800">Pegada de Carbono</h1>  <!--Titulo da página, fonte grande, cor cinza-escuro e um negrito leve-->
+                <h2 class="text-md text-gray-600 mt-2">Calculadora Simplificada escopo 1</h2> <!--um subtitulo, cinza claro com uma pequena margem do titilo h1-->
+                <form id="carbonForm" class="mt-4">   <!--Cria um formulário html, com margem superior e da o nome de carbonForm-->
+                    <label for="fuel" class="block text-sm font-medium text-gray-700">Quantidade de Combustível Usada (litros):</label> <!--Trás o nome que deve ser preeenchido no campo abaixo, for="fuel": liga o texto ao campos, ao clicar nele o campo é selecionado-->
+                    <input type="number" id="fuel" name="fuel" required step="0.01" min="0" value="0.00" 
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500"> <!--Cria um campo de entrada de número, com id e nome fuel, obrigatório, com passo, mínimo e valor inicial,Define o estilo do campo, com margem superior, largura total, preenchimento, borda arredondada, sombra e foco-->
 
-                    <label for="fuelType" class="block mt-4 text-sm font-medium text-gray-700">Tipo de Combustível:</label>
+                    <label for="fuelType" class="block mt-4 text-sm font-medium text-gray-700">Tipo de Combustível:</label> <!--Campo para seleção do combustivel, for="fuelType" liga com o campo abaixo-->
                     <select id="fuelType" name="fuelType" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500">
                         <option value="diesel">Diesel</option>
-                        <option value="gasolina">Gasolina</option>
+                        <option value="gasolina">Gasolina</option>                       <!--linhas 24 a 29- Define um novo campo de escolha e apos isso apresenta adiciona um "menu" com as opcoes possiveis -->
                         <option value="etanol">Etanol</option>
                         <option value="gnv">Gás Natural Veicular (GNV)</option>
                     </select>
 
-                    <label for="distance" class="block mt-4 text-sm font-medium text-gray-700">Distância Percorrida (km):</label>
+                    <label for="distance" class="block mt-4 text-sm font-medium text-gray-700">Distância Percorrida (km):</label> <!--Define um novo texto, trazendo o que deve ser passado no campo ligado "distance", houve modificação no texto e borda do conteudo acima-->
                     <input type="number" id="distance" name="distance" required step="0.01" min="0" max="10000"
                         value="0.00"
-                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500">
+                        class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500"> <!--Cria um novo campo de entrada de número, com id e nome distance, obrigatório, com passo, mínimo, máximo e valor inicial, Define o estilo do campo, com margem superior, largura total, preenchimento, borda arredondada, sombra e foco-->
 
-                    <p class="mt-4 text-sm text-gray-600">Fator de emissão de carbono do combustível: 2.68kg CO2/l</p>
-                    <p class="text-sm text-gray-600">Emissões de carbono por quilômetro: 0.12kg CO2/km</p>
+                    <p class="mt-4 text-sm text-gray-600">Fator de emissão de carbono do combustível: 2.68kg CO2/l</p> <!--Texto informativo sobre o fator de emissão de carbono do combustível, com margem superior e cor cinza claro-->
+                    <p class="text-sm text-gray-600">Emissões de carbono por quilômetro: 0.12kg CO2/km</p> <!--Texto informativo sobre as emissões de carbono por quilômetro, com margem superior e cor cinza claro-->
                     <button type="submit"
                         class="mt-4 w-full bg-indigo-500 text-white py-2 px-4 border border-transparent rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Calcular
+                        Calcular <!--Cria um botão de envio do formulário, com estilo definido pela biblioteca Tailwind CSS, modificando margem, largura, fundo, texto, preenchimento, borda, sombra e foco-->
                     </button>
                 </form>
                 <button id="saveDataBtn"
                     class="mt-4 w-full bg-green-500 text-white py-2 px-4 border border-transparent rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                    Salvar Dados
+                    Salvar Dados  <!--Cria um botão para salvar os dados, com estilo definido pela biblioteca Tailwind CSS, tambem modificando margem, largura, fundo, texto, preenchimento, borda, sombra e foco-->
                 </button>
                 <button id="loadTableBtn"
                     class="mt-4 w-full bg-blue-500 text-white py-2 px-4 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Carregar Tabela
+                    Carregar Tabela  <!--Cria um botão para carregar a tabela de dados salvos, com estilo definido pela biblioteca Tailwind CSS-->
                 </button>
-                <div id="result" class="mt-4"></div>
-                <div id="savedData" class="mt-8"></div>
+                <div id="result" class="mt-4"></div> <!--Cria um div para exibir o resultado do cálculo, com margem superior-->
+                <div id="savedData" class="mt-8"></div> <!--Cria um div para exibir os dados salvos-->
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/7.1.2/js/shepherd.min.js" integrity="sha512-Sy962BupVURsOoUAJWvZMJOurIl3F8ijnbO1Mx+t8cytaDCjK5TixnayZm3c8v0KSsn9AlTiy+wIL7zQlp1YKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>  <!--Importa a biblioteca annyang, que permite o reconhecimento de voz-->
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script> <!--Importa a biblioteca PouchDB, que permite o armazenamento de dados no navegador-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/7.1.2/js/shepherd.min.js" integrity="sha512-Sy962BupVURsOoUAJWvZMJOurIl3F8ijnbO1Mx+t8cytaDCjK5TixnayZm3c8v0KSsn9AlTiy+wIL7zQlp1YKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <!--Importa a biblioteca Shepherd.js, que permite criar tutoriais interativos-->
+    <script src="script.js"></script> <!--Importa o arquivo script.js, que contém a lógica da calculadora de pegada de carbono-->
 </body>
 </html>
